@@ -1,0 +1,167 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Subscription Platform documentation",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/add-subscriber": {
+            "post": {
+                "tags": [
+                    "Website Subscriber"
+                ],
+                "description": "Add new subscriber",
+                "operationId": "3b4e74abf329419f6abc45bc84c7a91f",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/AddWebsiteSubscriberRequest"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Subscriber added successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Subscriber added successfully."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/post": {
+            "post": {
+                "tags": [
+                    "Posts"
+                ],
+                "description": "Add new Post",
+                "operationId": "bd238b24935c81576a9ae3b990c80bd8",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/CreatePostRequest"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Post created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Post created successfully."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Meta": {
+                "properties": {
+                    "total": {
+                        "type": "integer"
+                    },
+                    "per_page": {
+                        "type": "integer"
+                    },
+                    "current_page": {
+                        "type": "integer"
+                    },
+                    "last_page": {
+                        "type": "integer"
+                    },
+                    "from": {
+                        "type": "integer"
+                    },
+                    "to": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "requestBodies": {
+            "AddWebsiteSubscriberRequest": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "website_id": {
+                                    "description": "The id of the website",
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "description": "The name of the subscriber",
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "description": "The email of the subscriber",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "CreatePostRequest": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "title": {
+                                    "description": "The title of the post",
+                                    "type": "string",
+                                    "nullable": false
+                                },
+                                "description": {
+                                    "description": "The description of the post",
+                                    "type": "string",
+                                    "nullable": false
+                                },
+                                "thumbnail": {
+                                    "description": "The thumbnail of the post",
+                                    "type": "file",
+                                    "nullable": true
+                                },
+                                "website_id": {
+                                    "description": "The id of the website",
+                                    "type": "integer",
+                                    "nullable": false
+                                },
+                                "status": {
+                                    "description": "The status of the post",
+                                    "type": "string",
+                                    "nullable": false
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
